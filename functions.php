@@ -36,7 +36,7 @@
 	/** login title **/
 	add_filter( 'login_headertext', 'my_login_logo_title' ); 
 	function my_login_logo_title( $headertext ) {
-		$headertext = esc_html__( 'Welcome to Adventures To Perú', 'grandtour-child' );
+		$headertext = esc_html__( 'WebSite Title', 'text-domain' );
 		return $headertext;
 	}
 
@@ -173,4 +173,16 @@ function rd_duplicate_post_link( $actions, $post ) {
 }
  
 add_filter( 'post_row_actions', 'rd_duplicate_post_link', 10, 2 );
+
+
+
+/*
+* @snippet       Quitar la opción Márketing de WooCommerce del menú de administración de WordPress
+* @author        Oscar Abad Folgueira
+*/
+add_filter('woocommerce_marketing_menu_items', 'ocultar_menu_marketing_admin');
+
+function ocultar_menu_marketing_admin($marketing_pages){
+    return array();
+}
 ?>
