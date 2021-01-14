@@ -45,6 +45,13 @@
 	function remove_footer_admin() {
 		echo 'Contact by <a href="mailto:cronoscopios@gmail.com?Subject=Hola%20desde%20adventurestoperu.com" target="_blank">Developer</a> | Documentation: <a href="https://www.youtube.com" target="_blank">video</a></p>';
 	}
+
+add_action('admin_footer', 'my_admin_footer_function');
+function my_admin_footer_function() {
+    echo '<p>' . __( 'This will be inserted at the bottom of admin page', 'textdomain' ) . '</p>';
+}
+
+
 ?>
 
 <?php
