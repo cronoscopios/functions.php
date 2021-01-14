@@ -8,12 +8,12 @@
 
 <?php
 	/** login logo image **/
-	//add_action( 'login_enqueue_scripts', 'my_login_logo' );
+	add_action( 'login_enqueue_scripts', 'my_login_logo' );
 	function my_login_logo() { 
 ?>
 	<style type="text/css">
 		#login h1 a, .login h1 a {
-			background-image: url('');
+			background-image:  url(<?php echo get_stylesheet_directory_uri(); ?>/images/site-login-logo.png); //cargar url logo
 			background-repeat: no-repeat;
 			background-size: contain;
 			width: auto;
@@ -175,7 +175,6 @@ function rd_duplicate_post_link( $actions, $post ) {
 add_filter( 'post_row_actions', 'rd_duplicate_post_link', 10, 2 );
 
 
-
 /*
 * @snippet       Quitar la opción Márketing de WooCommerce del menú de administración de WordPress
 * @author        Oscar Abad Folgueira
@@ -185,4 +184,14 @@ add_filter('woocommerce_marketing_menu_items', 'ocultar_menu_marketing_admin');
 function ocultar_menu_marketing_admin($marketing_pages){
     return array();
 }
+
+/*
+* @snippet       Upload SVG
+* @author        
+*/
+function cc_mime_types($mimes) {
+	$mimes['svg'] = 'image/svg+xml';
+	return $mimes;
+}	
+add_filter('upload_mimes', 'cc_mime_types');
 ?>
