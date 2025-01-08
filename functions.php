@@ -209,4 +209,18 @@ wp_die('<h1>Under Maintenance</h1><br />We’re hard at work improving our site 
 }
 }
 add_action('get_header', 'wp_maintenance_mode');
+
+//Custom admin logo
+function custom_admin_logo() {
+    echo '
+    <style type="text/css">
+        #wpadminbar #wp-admin-bar-wp-logo > .ab-item .ab-icon {
+            background-image: url(' . get_stylesheet_directory_uri() . '/images/custom-admin-logo.png) !important;
+            background-size: cover;
+        }
+    </style>
+    ';
+}
+add_action('admin_head', 'custom_admin_logo');
+
 ?>
