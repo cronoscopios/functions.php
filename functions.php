@@ -201,4 +201,12 @@ function cc_mime_types($mimes) {
 	return $mimes;
 }	
 add_filter('upload_mimes', 'cc_mime_types');
+
+// Activate WordPress Maintenance Mode
+function wp_maintenance_mode() {
+if (!current_user_can('edit_themes') || !is_user_logged_in()) {
+wp_die('<h1>Under Maintenance</h1><br />We’re hard at work improving our site for you. We’ll be back online shortly. Thanks for bearing with us!');
+}
+}
+add_action('get_header', 'wp_maintenance_mode');
 ?>
