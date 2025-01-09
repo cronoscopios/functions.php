@@ -223,4 +223,17 @@ function custom_admin_logo() {
 }
 add_action('admin_head', 'custom_admin_logo');
 
+// submenu remove
+function remove_wp_logo_menu() {
+    global $wp_admin_bar;
+    $wp_admin_bar->remove_menu('about');          // Elimina el enlace 'Acerca de WordPress'
+    $wp_admin_bar->remove_menu('wporg');          // Elimina el enlace 'WordPress.org'
+    $wp_admin_bar->remove_menu('documentation');  // Elimina el enlace 'Documentación'
+    $wp_admin_bar->remove_menu('support-forums'); // Elimina el enlace 'Foros de soporte'
+    $wp_admin_bar->remove_menu('feedback');       // Elimina el enlace 'Enviar comentarios'
+}
+add_action('wp_before_admin_bar_render', 'remove_wp_logo_menu', 0)
+
+
+
 ?>
